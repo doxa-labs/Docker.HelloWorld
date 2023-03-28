@@ -1,12 +1,1 @@
-﻿using System;
-
-namespace Docker.HelloWorld
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Aganta burina burinata!");
-        }
-    }
-}
+﻿Console.WriteLine("Aganta burina burinata Docker!");
