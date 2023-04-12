@@ -1,13 +1,25 @@
 name: docker
-on: 
+on:
   push:
-    branches:
-    - main
-    
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag doxalabs/hello-world:latest
+      - name: Login to GitHub Packages V2
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io --username doxa-labs --password-stdin
+
+      - uses: actions/checkout@master
+
+      - name: Build the Docker Image
+        run: docker build . --file Dockerfile --tag ghcr.io/doxa-labs/hello-world/hello-world:latest
+
+      - name: Push to GitHub Registry
+        run: docker push ghcr.io/doxa-labs/hello-world/hello-world:latest
+
+      - name: Logout
+        run: docker logout
