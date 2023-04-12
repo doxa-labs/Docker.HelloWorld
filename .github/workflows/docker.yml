@@ -16,10 +16,10 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Build the Docker Image
-        run: docker build . --file Dockerfile --tag ghcr.io/doxa-labs/hello-world/hello-world:latest
+        run: docker build . --file Dockerfile --tag ghcr.io/doxa-labs/docker-helloworld/docker-helloworld:latest
 
       - name: Push to GitHub Registry
-        run: docker push ghcr.io/doxa-labs/hello-world/hello-world:latest
+        run: docker push ghcr.io/doxa-labs/docker-helloworld/docker-helloworld:latest
 
       - name: Logout
         run: docker logout
